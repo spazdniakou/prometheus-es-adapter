@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/TV4/graceful v0.3.4
+	github.com/aws/aws-sdk-go v1.25.22
 	github.com/fortytw2/leaktest v1.3.0 // indirect
 	github.com/gogo/protobuf v1.2.1
 	github.com/golang/snappy v0.0.1
@@ -19,6 +20,7 @@ require (
 	github.com/prometheus/common v0.4.1
 	github.com/prometheus/procfs v0.0.0-20190523193104-a7aeb8df3389 // indirect
 	github.com/prometheus/prometheus v2.5.0+incompatible
+	github.com/sha1sum/aws_signing_client v0.0.0-20170514202702-9088e4c7b34b
 	github.com/stretchr/testify v1.3.0 // indirect
 	go.uber.org/atomic v1.4.0 // indirect
 	go.uber.org/multierr v1.1.0 // indirect

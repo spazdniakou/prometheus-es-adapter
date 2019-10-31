@@ -1,5 +1,20 @@
 # github.com/TV4/graceful v0.3.4
 github.com/TV4/graceful
+# github.com/aws/aws-sdk-go v1.25.22
+github.com/aws/aws-sdk-go/aws/credentials
+github.com/aws/aws-sdk-go/aws/signer/v4
+github.com/aws/aws-sdk-go/aws/awserr
+github.com/aws/aws-sdk-go/internal/ini
+github.com/aws/aws-sdk-go/internal/shareddefaults
+github.com/aws/aws-sdk-go/aws
+github.com/aws/aws-sdk-go/aws/request
+github.com/aws/aws-sdk-go/internal/sdkio
+github.com/aws/aws-sdk-go/private/protocol/rest
+github.com/aws/aws-sdk-go/aws/endpoints
+github.com/aws/aws-sdk-go/aws/awsutil
+github.com/aws/aws-sdk-go/aws/client/metadata
+github.com/aws/aws-sdk-go/private/protocol
+github.com/aws/aws-sdk-go/internal/sdkmath
 # github.com/beorn7/perks v1.0.0
 github.com/beorn7/perks/quantile
 # github.com/gogo/protobuf v1.2.1
@@ -29,6 +44,8 @@ github.com/grpc-ecosystem/grpc-gateway/utilities
 github.com/grpc-ecosystem/grpc-gateway/internal
 # github.com/heptiolabs/healthcheck v0.0.0-20180807145615-6ff867650f40
 github.com/heptiolabs/healthcheck
+# github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af
+github.com/jmespath/go-jmespath
 # github.com/mailru/easyjson v0.0.0-20190403194419-1ea4449da983
 github.com/mailru/easyjson
 github.com/mailru/easyjson/jlexer
@@ -57,6 +74,8 @@ github.com/prometheus/procfs
 github.com/prometheus/procfs/internal/fs
 # github.com/prometheus/prometheus v2.5.0+incompatible
 github.com/prometheus/prometheus/prompb
+# github.com/sha1sum/aws_signing_client v0.0.0-20170514202702-9088e4c7b34b
+github.com/sha1sum/aws_signing_client
 # go.uber.org/atomic v1.4.0
 go.uber.org/atomic
 # go.uber.org/multierr v1.1.0

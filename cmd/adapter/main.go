@@ -4,13 +4,17 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/TV4/graceful"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	v4 "github.com/aws/aws-sdk-go/aws/signer/v4"
 	gorilla "github.com/gorilla/handlers"
 	"github.com/namsral/flag"
 	"github.com/pwillie/prometheus-es-adapter/pkg/elasticsearch"
 	"github.com/pwillie/prometheus-es-adapter/pkg/handlers"
 	"github.com/pwillie/prometheus-es-adapter/pkg/logger"
+	"github.com/sha1sum/aws_signing_client"
 	"go.uber.org/zap"
 	elastic "gopkg.in/olivere/elastic.v6"
 )
@@ -24,9 +28,9 @@ var (
 
 func main() {
 	var (
-		url           = flag.String("es_url", "http://localhost:9200", "Elasticsearch URL.")
-		user          = flag.String("es_user", "", "Elasticsearch User.")
-		pass          = flag.String("es_password", "", "Elasticsearch User Password.")
+		url = flag.String("es_url", "http://localhost:9200", "Elasticsearch URL.")
+		// user          = flag.String("es_user", "", "Elasticsearch User.")
+		// pass          = flag.String("es_password", "", "Elasticsearch User Password.")
 		workers       = flag.Int("es_workers", 1, "Number of batch workers.")
 		batchMaxAge   = flag.Int("es_batch_max_age", 10, "Max period in seconds between bulk Elasticsearch insert operations")
 		batchMaxDocs  = flag.Int("es_batch_max_docs", 1000, "Max items for bulk Elasticsearch insert operation")
@@ -55,9 +59,14 @@ func main() {
 
 	ctx := context.TODO()
 
+	creds := credentials.NewEnvCredentials()
+	signer := v4.NewSigner(creds)
+	awsClient, err := aws_signing_client.New(signer, nil, "es", os.Getenv("AWS_REGION"))
+
 	client, err := elastic.NewClient(
 		elastic.SetURL(*url),
-		elastic.SetBasicAuth(*user, *pass),
+		elastic.SetScheme("https"),
+		elastic.SetHttpClient(awsClient),
 		elastic.SetSniff(*sniffEnabled),
 	)
 	if err != nil {
